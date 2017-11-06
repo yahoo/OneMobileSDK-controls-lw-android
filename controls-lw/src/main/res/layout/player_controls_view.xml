@@ -1,0 +1,275 @@
+<!--
+  ~ Copyright (c) 2016 One by Aol : Publishers. All rights reserved.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:auto="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="#000"
+        android:visibility="invisible"/>
+
+    <RelativeLayout
+        android:id="@+id/controls_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/live_indicator">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.4"
+            android:background="@android:color/black"
+            android:clickable="false"/>
+
+        <LinearLayout
+            android:id="@+id/prev_next_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/controls_padding"
+            android:paddingRight="@dimen/controls_padding">
+
+            <com.aol.mobile.sdk.controls.view.TintableImageButton
+                android:id="@+id/prev_button"
+                style="@style/NavigationButton"
+                android:layout_marginRight="-12dp"
+                auto:remotePressSource="ic_back_on"
+                auto:remoteSource="ic_back"
+                tools:ignore="RtlHardcoded"/>
+
+            <com.aol.mobile.sdk.controls.view.TintableImageButton
+                android:id="@+id/backward_seek_button"
+                style="@style/QuickSeekButton"
+                android:layout_weight="1"/>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.aol.mobile.sdk.controls.view.TintableImageButton
+                    android:id="@+id/play_button"
+                    style="@style/MainActionButton"
+                    auto:remoteSource="ic_play"/>
+
+                <com.aol.mobile.sdk.controls.view.TintableImageButton
+                    android:id="@+id/pause_button"
+                    style="@style/MainActionButton"
+                    auto:remoteSource="ic_pause"/>
+            </FrameLayout>
+
+            <com.aol.mobile.sdk.controls.view.TintableImageButton
+                android:id="@+id/forward_seek_button"
+                style="@style/QuickSeekButton"
+                android:layout_weight="1"/>
+
+            <com.aol.mobile.sdk.controls.view.TintableImageButton
+                android:id="@+id/next_button"
+                style="@style/NavigationButton"
+                android:layout_marginLeft="-12dp"
+                auto:remotePressSource="ic_forward_on"
+                auto:remoteSource="ic_forward"
+                tools:ignore="RtlHardcoded"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/seekbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/seeker_height"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="@dimen/seekbar_bottom_padding"
+            android:background="@android:color/transparent"
+            android:nextFocusDown="@id/tracks_button"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            tools:ignore="RtlHardcoded"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/current_time"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:paddingEnd="2dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:paddingStart="2dp"
+                android:textSize="14dp"
+                tools:text="00:00"/>
+
+            <com.aol.mobile.sdk.controls.view.TintableSeekbar
+                android:id="@+id/seekbar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/seeker_height"
+                android:maxHeight="@dimen/seeker_height"
+                android:minHeight="@dimen/seeker_height"
+                android:padding="0px"
+                android:progressDrawable="@null"
+                android:thumb="@null"
+                android:thumbOffset="0px"
+                auto:remoteSeekBg="ic_thumbseek_background"
+                auto:remoteSeekProgress="ic_thumbseek"
+                auto:remoteSeekThumb="ic_thumb"/>
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:textSize="14dp"
+                tools:text="00:00"/>
+        </RelativeLayout>
+
+        <com.aol.mobile.sdk.controls.view.TintableImageButton
+            android:id="@id/tracks_button"
+            style="@style/ControlToggleButton"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/title_view"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            tools:ignore="RtlHardcoded"/>
+
+        <TextView
+            android:id="@id/title_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@id/tracks_button"
+            android:layout_toStartOf="@id/tracks_button"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:paddingLeft="9dp"
+            android:paddingStart="9dp"
+            android:textSize="15sp"
+            tools:ignore="RtlHardcoded"/>
+
+        <com.aol.mobile.sdk.controls.view.SidePanel
+            android:id="@+id/side_panel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/seekbar_container"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:dividerPadding="5dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            tools:ignore="RtlHardcoded"/>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/compass_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/live_indicator"
+        android:layout_margin="14dp"
+        android:visibility="invisible"
+        tools:ignore="RtlHardcoded">
+
+        <com.aol.mobile.sdk.controls.view.TintableImageButton
+            style="@style/CompassButton"
+            auto:remoteSource="ic_360_compass_body"/>
+
+        <com.aol.mobile.sdk.controls.view.TintableImageButton
+            android:id="@+id/compass_view"
+            style="@style/CompassButton"
+            android:rotation="180"
+            auto:remoteSource="ic_360_compass_direction"/>
+    </FrameLayout>
+
+
+    <com.aol.mobile.sdk.controls.view.TintableImageButton
+        android:id="@+id/progressbar"
+        style="@style/MainActionButton"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        auto:remotePressEffectSource="@null"
+        auto:remoteSource="ic_loading"/>
+
+    <com.aol.mobile.sdk.controls.view.TintableImageButton
+        android:id="@+id/replay_button"
+        style="@style/ControlButton"
+        android:layout_width="@dimen/controls_main_btn_size"
+        android:layout_height="@dimen/controls_main_btn_size"
+        android:layout_alignEnd="@+id/progressbar"
+        android:layout_alignRight="@+id/progressbar"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        auto:remotePressEffectSource="ic_halo"
+        auto:remoteSource="ic_replay"
+        tools:ignore="RtlHardcoded"/>
+
+    <FrameLayout
+        android:id="@+id/subtitles_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/subtitles_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#55333333"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="#FFFFFF"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/live_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/title_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:visibility="gone"
+        tools:ignore="RtlHardcoded">
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/live_indicator"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp"
+            android:text="@string/live"
+            android:textColor="@color/default_main_color"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+</RelativeLayout>

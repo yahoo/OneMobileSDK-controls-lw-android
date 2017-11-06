@@ -1,0 +1,33 @@
+/*
+ * Copyright (c) 2016 One by Aol : Publishers. All rights reserved.
+ */
+
+repositories {
+    google()
+    jcenter()
+}
+
+buildscript {
+    apply from: 'https://raw.githubusercontent.com/aol-public/OneMobileSDK-tools-android/master/env-props.gradle'
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath ANDROID_GRADLE_PLUGIN
+        classpath ANDROID_MAVEN_PLUGIN
+        classpath KOTLIN_PLUGIN
+        classpath GIT_PUBLISH_PLUGIN
+    }
+}
+
+allprojects {
+    apply from: 'https://raw.githubusercontent.com/aol-public/OneMobileSDK-tools-android/master/env-props.gradle'
+    
+    repositories {
+        google()
+        jcenter()
+    }
+}

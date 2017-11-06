@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016 One by Aol : Publishers. All rights reserved.
+  -->
+
+<resources>
+    <string name="advertisement">Advertisement</string>
+    <string name="audio_tracks_title">AUDIO</string>
+    <string name="text_tracks_title">SUBTITLES</string>
+    <string name="track_close_title">Close</string>
+    <string name="live">LIVE</string>
+</resources>
