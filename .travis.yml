@@ -1,4 +1,3 @@
-sudo: false
 jdk: oraclejdk8
 
 language: android
@@ -34,12 +33,17 @@ cache:
 script: ./gradlew lintRelease testRelease
 
 deploy:
-  provider: script
-  skip_cleanup: true
-  on:
-    branch: master
-    tags: true
+  - provider: script
     script: ./gradlew gitPublishPush
+    skip_cleanup: true
+    on:
+      branch: master
+
+  - provider: script
+    script: ./gradlew gitPublishPush
+    skip_cleanup: true
+    on:
+      tags: true
 
 notifications:
   email: false
