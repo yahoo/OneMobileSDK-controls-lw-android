@@ -67,3 +67,7 @@
 -keep public class com.aol.mobile.sdk.controls.utils.ViewUtils {
     public protected *;
 }
+
+-keep public class com.aol.mobile.sdk.controls.utils.ImageUtils {
+    public protected *;
+}
