@@ -30,20 +30,22 @@ cache:
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
 
-script: ./gradlew lintRelease testRelease
+script:
+  - git lfs env
+  - #./gradlew lintRelease testRelease
 
-deploy:
-  - provider: script
-    script: ./gradlew gitPublishPush
-    skip_cleanup: true
-    on:
-      branch: master
-
-  - provider: script
-    script: ./gradlew gitPublishPush
-    skip_cleanup: true
-    on:
-      tags: true
+#deploy:
+#  - provider: script
+#    script: ./gradlew gitPublishPush
+#    skip_cleanup: true
+#    on:
+#      branch: master
+#
+#  - provider: script
+#    script: ./gradlew gitPublishPush
+#    skip_cleanup: true
+#    on:
+#      tags: true
 
 notifications:
   email: false
