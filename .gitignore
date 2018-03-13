@@ -13,7 +13,9 @@ bin/
 gen/
 
 # IntelliJ
-.idea/
+.idea/*.xml
+.idea/libraries
+.idea/dictionaries
 *.iml
 
 # Gradle files
@@ -36,3 +38,5 @@ proguard/
 # Android Studio captures folder
 captures/
 *.DS_Store
+*TrackingPixelsGenerator.java
+sdk/proguard-classes.pro
