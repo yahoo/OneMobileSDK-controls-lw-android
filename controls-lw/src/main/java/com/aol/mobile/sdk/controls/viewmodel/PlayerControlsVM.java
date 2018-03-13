@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2016 One by Aol : Publishers. All rights reserved.
+ * Copyright 2018, Oath Inc.
+ * Licensed under the terms of the MIT License. See LICENSE.md file in project root for terms.
  */
 
 package com.aol.mobile.sdk.controls.viewmodel;
@@ -10,6 +11,10 @@ import android.support.annotation.Nullable;
 import java.util.LinkedList;
 
 public class PlayerControlsVM {
+    @NonNull
+    public final LinkedList<TrackOptionVM> audioTracks = new LinkedList<>();
+    @NonNull
+    public final LinkedList<TrackOptionVM> ccTracks = new LinkedList<>();
     public boolean isLoading;
     public boolean isPlayButtonVisible;
     public boolean isPauseButtonVisible;
@@ -48,8 +53,4 @@ public class PlayerControlsVM {
     public boolean isLiveIndicatorVisible;
     public boolean isOnLiveEdge;
     public boolean isCastButtonVisible;
-    @NonNull
-    public final LinkedList<TrackOptionVM> audioTracks = new LinkedList<>();
-    @NonNull
-    public final LinkedList<TrackOptionVM> ccTracks = new LinkedList<>();
 }
